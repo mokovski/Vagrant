@@ -1,0 +1,17 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  # Create a forwarded port 
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+
+  # Share an additional folder to the guest VM. 
+  config.vm.synced_folder "C:/WORK/Vagrant/centos/Projects", "/var/www"
+
+  config.vm.provision "shell", inline: <<-SHELL
+      echo "Start update and install soft"
+      sudo yum update -y && sudo yum upgrade -y
+      sudo yum install -y vim
+      sudo yum install -y mc
+      sudo yum install net-tools
+   SHELL
+end
