@@ -1,0 +1,21 @@
+Install Jenkins
+- Configured server (Ubuntu 18.04)
+sudo apt-get update
+#install java
+sudo apt install openjdk-8-jdk
+java -version
+#install Jenkins
+wget –no-check-certificate --- vvv -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary /> /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt install jenkins
+sudo systemctl status jenkins
+# Open port 8080
+sudo ufw allow 8080
+
+
+
+Configure Nat to forward ip 192.168.56.1 of port 8080 to 10.0.2.15 8080
+
+Unblock and use Jenkins
+
