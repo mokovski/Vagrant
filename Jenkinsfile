@@ -13,12 +13,12 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                sh 'ssh administrator@192.168.8.56.108 \'systemctl status sshd\''
+                sh 'ssh administrator@192.168.8.56.109 \'systemctl status sshd\''
             }
         }
         stage("Second step") {
             steps {
-                sh 'ssh root@ub1 \'uptime\''
+                sh 'ssh administrator@192.168.56.109 \'uptime\''
             }
         }
     }
