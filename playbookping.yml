@@ -1,3 +1,5 @@
+### Ping
+
 ---
 - name: Test Connection to my servers
   hosts: all
@@ -7,5 +9,90 @@
 
   - name: Ping my servers
     ping:
+
+
+### Install Apache
+
+---
+- name: Install default Apache Web Server
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install Apache Web Server
+    yum:  name=httpd state=latest
+
+  - name: Start Apache and Enable it on the boot
+    service: name=httpd state=started enabled=yes
+
+
+
+ 
+### Get Hostname
+
+---
+ - hosts: all
+   tasks:
+   - name: Get hostname
+     debug:
+        var=ansible_hostname
+
+
+### Create User And SSH key
+
+
+
+--- 
+- 
+  hosts: all
+  tasks: 
+    - 
+      name: "Add the user vasili"
+      user: 
+        name: vasili
+    - 
+      name: "Create a ssh-key"
+      user: 
+        generate_ssh_key: true
+        name: vasili
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_rsa
+
+
+
+### Reboot hosts 
+
+
+--- 
+- 
+  hosts: all
+  tasks: 
+    - 
+      name: "Reboot the server and wait for it to come back up."
+      reboot: ~
+
+
+
+#### Install software
+
+
+--- 
+- 
+  become: true
+  hosts: all
+  tasks: 
+    - 
+      name: "mc install"
+      yum: "name=mc state=latest"
+    - 
+      name: "vim install"
+      yum: "name=vim state=latest"
+    - 
+      name: "curl install"
+      yum: "name=mc state=latest"
+
+
+
+
 
     
