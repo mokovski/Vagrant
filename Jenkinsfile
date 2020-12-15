@@ -1,5 +1,6 @@
 #!groovy
 // It's a comment
+// Yep
 // Crazy Frog
 // Connecting to Server And check status
 properties([disableConcurrentBuilds()])
@@ -15,12 +16,12 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                sh 'ssh root@192.168.56.110 \'systemctl status sshd\''
+                sh 'ssh root@192.168.56.101 \'systemctl status sshd\''
             }
         }
         stage("Second step") {
             steps {
-                sh 'ssh root@192.168.56.110 \'uptime\''
+                sh 'ssh root@192.168.56.101 \'uptime\''
             }
         }
     }
