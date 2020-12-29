@@ -1,4 +1,5 @@
 #!groovy
+// comment
 // Connecting to Server And check status
 properties([disableConcurrentBuilds()])
 
