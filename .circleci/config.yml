@@ -17,9 +17,12 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run:
+          name: "Setup custom environment variables"
+          command: echo 'export ${TEST}' >> $BASH_ENV
       - run: # print the name of the branch we're on
           name: "What branch am I on?"
-          command: echo $TEST
+          command: echo ${TEST}
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
